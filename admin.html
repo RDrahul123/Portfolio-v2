@@ -209,14 +209,21 @@
           <div class="dash-card"><div style="font-size:1.5rem;margin-bottom:.5rem">🌐</div><div class="dash-num">Live</div><div class="dash-lbl">GitHub Pages</div><div class="dash-badge"><span class="status-dot"></span> Online</div></div>
           <div class="dash-card"><div style="font-size:1.5rem;margin-bottom:.5rem">📝</div><div class="dash-num" id="d-saved" style="font-size:1rem">Never</div><div class="dash-lbl">Last Published</div></div>
         </div>
+        <div class="section-card" id="gh-banner">
+          <div class="section-card-header" style="border-color:rgba(245,158,11,.25);margin-bottom:0">
+            <div class="section-card-icon" style="background:rgba(245,158,11,.12);color:var(--yellow)">🔑</div>
+            <div style="flex:1"><div class="section-card-title" id="gh-banner-title">GitHub: Not Connected</div><div class="section-card-sub" id="gh-banner-sub">Add your PAT to enable live publishing</div></div>
+            <button onclick="showSetupScreen()" id="gh-connect-btn" style="padding:.5rem 1rem;background:var(--yellow);color:#000;border:none;border-radius:.5rem;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap">Connect →</button>
+          </div>
+        </div>
+
         <div class="section-card">
-          <div class="section-card-header"><div class="section-card-icon">💡</div><div><div class="section-card-title">How Publishing Works</div><div class="section-card-sub">The flow from edit to live site</div></div></div>
+          <div class="section-card-header"><div class="section-card-icon">💡</div><div><div class="section-card-title">How Publishing Works</div><div class="section-card-sub">Edit → Publish → Live in ~60 seconds</div></div></div>
           <div style="font-size:.875rem;color:var(--text2);line-height:1.8;display:flex;flex-direction:column;gap:.5rem">
             <p>1. Make your edits in any section using the sidebar.</p>
-            <p>2. Click <strong style="color:var(--blue2)">🚀 Publish Changes</strong> — this commits <code style="background:var(--bg3);padding:.1rem .4rem;border-radius:.25rem;font-size:.8rem">data.json</code> directly to your GitHub repo.</p>
-            <p>3. GitHub Actions automatically rebuilds and deploys the site.</p>
-            <p>4. Your live portfolio updates within ~60 seconds. ✅</p>
-            <p style="color:var(--yellow)">⚠ First time? Go to <strong>GitHub Settings</strong> in the sidebar to enter your token.</p>
+            <p>2. Click <strong style="color:var(--blue2)">🚀 Publish Changes</strong> — this writes <code style="background:var(--bg3);padding:.1rem .4rem;border-radius:.25rem;font-size:.8rem">data.json</code> to your GitHub repo.</p>
+            <p>3. GitHub Actions rebuilds and deploys automatically.</p>
+            <p>4. Your live portfolio updates within ~60 seconds ✅</p>
           </div>
         </div>
       </div>
@@ -343,14 +350,23 @@ function getGH() {
 
 function checkGHConfig() {
   const gh = getGH();
+  // Pre-fill setup form with defaults
+  document.getElementById('ghOwner').value = gh.owner || 'RDrahul123';
+  document.getElementById('ghRepo').value = gh.repo || 'Portfolio';
+  if (gh.token) document.getElementById('ghToken').value = gh.token;
+
   if (!gh.token) {
-    // Fill setup defaults
-    document.getElementById('ghOwner').value = gh.owner;
-    document.getElementById('ghRepo').value = gh.repo;
-    document.getElementById('setup-screen').style.display = 'flex';
+    showSetupScreen();
   } else {
     startAdmin();
   }
+}
+
+function showSetupScreen() {
+  const s = document.getElementById('setup-screen');
+  s.style.display = 'flex';
+  s.style.alignItems = 'center';
+  s.style.justifyContent = 'center';
 }
 
 function saveGHConfig() {
@@ -492,6 +508,22 @@ function showPanel(name, btn) {
 // ═══ INIT ══════════════════════════════════════
 function startAdmin() {
   document.getElementById('admin-screen').style.display = 'block';
+  // Update GitHub connection banner
+  const gh2 = getGH();
+  const banner = document.getElementById("gh-banner");
+  const bTitle = document.getElementById("gh-banner-title");
+  const bSub = document.getElementById("gh-banner-sub");
+  const bBtn = document.getElementById("gh-connect-btn");
+  if (gh2.token) {
+    banner.style.borderColor = "rgba(16,185,129,.3)";
+    banner.style.background = "rgba(16,185,129,.04)";
+    bTitle.textContent = "✅ GitHub Connected";
+    bSub.textContent = gh2.owner + "/" + gh2.repo + " — ready to publish";
+    bBtn.textContent = "Update ↗";
+    bBtn.style.background = "var(--bg3)";
+    bBtn.style.color = "var(--text2)";
+    bBtn.style.border = "1px solid var(--border)";
+  }
   const d = getData();
   // Fill fields
   setV('f-name', d.hero.name); setV('f-role', d.hero.role); setV('f-bio', d.hero.bio); setV('f-photo', d.hero.photoUrl);

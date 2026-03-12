@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "name": "Rahul",
+    "role": "Data Science Analyst & Software Engineer",
+    "bio": "I transform complex datasets into actionable insights and build robust, scalable applications. Specializing in Python, Machine Learning, and Cloud Architecture, I bridge the gap between raw data and strategic decision-making.",
+    "photoUrl": "https://raw.githubusercontent.com/RDrahul123/RDrahul123/main/20251206_111856-IMG_STYLE~2.jpg"
+  },
+  "about": {
+    "p1": "I am a passionate Data Science Analyst and Software Engineer with a knack for turning raw data into strategic assets. My expertise lies in building predictive models, optimizing data pipelines, and developing scalable software solutions.",
+    "p2": "From automating 100K+ record queries to improving decision-making efficiency by 15%, I focus on tangible impact. I leverage Python, Machine Learning, and Cloud Technologies to solve complex business challenges.",
+    "statExp": "3+",
+    "statData": "100K+"
+  },
+  "experience": [
+    {
+      "id": "e1",
+      "role": "Data Science Analyst",
+      "company": "Samatrix Consulting Private Limited",
+      "period": "Sept 2024 – Present",
+      "bullets": [
+        "Interpreted datasets to extract insights that led to a 15% improvement in data-driven decision-making.",
+        "Standardized data cleaning procedures using Python and Pandas, achieving 99.9% accuracy.",
+        "Queried and examined over 100K records weekly using SQL and Python, cutting retrieval time by 20%.",
+        "Audited data quality, identifying and resolving 95% of data discrepancies."
+      ]
+    },
+    {
+      "id": "e2",
+      "role": "Software Development Engineer",
+      "company": "Antardrishti Foundation",
+      "period": "Oct 2022 – Apr 2024",
+      "bullets": [
+        "Directed a team of three in developing responsive websites, increasing user engagement by 20%.",
+        "Instituted automated code validation and CI pipelines, cutting bugs by 25%.",
+        "Boosted system efficiency by cutting load times by 25% using C++ and Python."
+      ]
+    },
+    {
+      "id": "e3",
+      "role": "Software Development Intern",
+      "company": "TCS iON",
+      "period": "Jun 2022 – Sept 2022",
+      "bullets": [
+        "Engineered blockchain application solutions with Python and Solidity, improving code efficiency by 30%.",
+        "Orchestrated Docker deployments on AWS, improving transaction speed by 15%."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "title": "Sales Analysis Dashboard",
+      "category": "Data Analysis",
+      "desc": "An interactive Power BI dashboard analyzing 12 months of sales data. Segmented product data into 15+ subcategories and mapped regional profits across 50 zones, identifying optimization opportunities that boosted profitability.",
+      "tags": "Power BI,Excel,JSON,Data Analytics",
+      "github": "https://github.com/RDrahul123/Sales-Dashboard",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "id": "p2",
+      "title": "Financial Market Trend Predictor",
+      "category": "Machine Learning",
+      "desc": "A Python-based analytics engine that evaluated stock and cryptocurrency trends, achieving a 15% increase in predictive accuracy through machine learning models.",
+      "tags": "Python,Machine Learning,Pandas,Matplotlib",
+      "github": "https://github.com/RDrahul123/Stock-Analysis",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop"
+    }
+  ],
+  "skills": [
+    { "id": "s1", "category": "Programming Languages", "items": "Python,C++,Java" },
+    { "id": "s2", "category": "Data Analysis & Viz", "items": "Pandas,NumPy,Matplotlib,Seaborn,Power BI,Tableau,Excel,Jupyter,TensorFlow,Keras" },
+    { "id": "s3", "category": "Machine Learning", "items": "Scikit-learn,Regression,Classification,Feature Engineering,Predictive Modeling,Time Series" },
+    { "id": "s4", "category": "Databases", "items": "MySQL,MongoDB" },
+    { "id": "s5", "category": "Tools & Platforms", "items": "Git,GitHub,VS Code,Docker,AWS,Linux" },
+    { "id": "s6", "category": "Other", "items": "ETL,Data Wrangling,Data Cleaning,Agile,Problem Solving" }
+  ],
+  "education": [
+    {
+      "id": "edu1",
+      "institution": "Acropolis Institute of Technology and Research",
+      "degree": "B.Tech in Computer Science",
+      "period": "2018 – 2022",
+      "score": "CGPA: 8.2"
+    },
+    {
+      "id": "edu2",
+      "institution": "Vidyasagar School",
+      "degree": "Science (Maths, Physics, Chemistry, Computer Science)",
+      "period": "2017 – 2018",
+      "score": "Percentage: 78.0"
+    }
+  ]
+}

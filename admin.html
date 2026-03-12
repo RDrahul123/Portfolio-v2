@@ -8,68 +8,76 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--bg:#0a0f1e;--bg2:#0f172a;--bg3:#1e293b;--card:#111827;--border:#1e3a5f;--border2:#2d5a8e;--text:#e8f0fe;--text2:#94a3b8;--text3:#475569;--blue:#3b82f6;--blue2:#60a5fa;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;--purple:#8b5cf6}
-    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
     ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 
-    /* ── LOGIN SCREEN ── */
-    #login-screen{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column}
-    .login-card{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:3rem;width:100%;max-width:400px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+    /* LOGIN */
+    #login-screen{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;align-items:center;justify-content:center}
+    .login-card{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:3rem;width:100%;max-width:420px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
     .login-logo{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
-    .login-logo-icon{width:3rem;height:3rem;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:.75rem;display:flex;align-items:center;justify-content:center;font-size:1.25rem}
-    .login-title{font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--text)}
-    .login-sub{font-size:.8rem;color:var(--text3)}
+    .login-logo-icon{width:3rem;height:3rem;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:.75rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+    .login-title{font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700}
+    .login-sub{font-size:.78rem;color:var(--text3)}
     .login-field{margin-bottom:1.25rem}
-    .login-label{display:block;font-size:.8rem;font-weight:500;color:var(--text2);margin-bottom:.4rem;font-family:'Space Mono',monospace}
-    .login-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:.75rem;padding:.75rem 1rem;color:var(--text);font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:all .2s}
+    .login-label{display:block;font-size:.78rem;font-weight:600;color:var(--text2);margin-bottom:.4rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+    .login-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:.75rem;padding:.75rem 1rem;color:var(--text);font-size:.9rem;outline:none;transition:all .2s}
     .login-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
-    .login-btn{width:100%;padding:.85rem;background:var(--blue);color:#fff;border:none;border-radius:.75rem;font-family:'Inter',sans-serif;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .2s;margin-top:.5rem}
+    .login-btn{width:100%;padding:.85rem;background:var(--blue);color:#fff;border:none;border-radius:.75rem;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;margin-top:.5rem}
     .login-btn:hover{background:var(--blue2);transform:translateY(-1px)}
     .login-error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:.5rem;padding:.65rem 1rem;font-size:.8rem;color:#fca5a5;margin-bottom:1rem;display:none}
-    .login-note{text-align:center;margin-top:1.5rem;font-size:.7rem;color:var(--text3);font-family:'Space Mono',monospace}
+    .login-note{text-align:center;margin-top:1.5rem;font-size:.68rem;color:var(--text3);font-family:'Space Mono',monospace}
 
-    /* ── ADMIN LAYOUT ── */
+    /* SETUP SCREEN */
+    #setup-screen{position:fixed;inset:0;z-index:998;background:var(--bg);display:none;align-items:center;justify-content:center}
+    .setup-card{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:3rem;width:100%;max-width:480px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+    .setup-title{font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+    .setup-sub{font-size:.85rem;color:var(--text2);margin-bottom:2rem;line-height:1.6}
+    .setup-steps{background:var(--bg2);border:1px solid var(--border);border-radius:.75rem;padding:1.25rem;margin-bottom:1.5rem;font-size:.82rem;color:var(--text2);line-height:1.8}
+    .setup-steps ol{padding-left:1.25rem}
+    .setup-steps a{color:var(--blue2)}
+    .setup-field{margin-bottom:1.25rem}
+    .setup-label{display:block;font-size:.78rem;font-weight:600;color:var(--text2);margin-bottom:.4rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+    .setup-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:.75rem;padding:.75rem 1rem;color:var(--text);font-size:.9rem;outline:none;transition:all .2s;font-family:'Space Mono',monospace}
+    .setup-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+    .setup-hint{font-size:.7rem;color:var(--text3);margin-top:.3rem}
+    .setup-btn{width:100%;padding:.85rem;background:var(--green);color:#fff;border:none;border-radius:.75rem;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s}
+    .setup-btn:hover{transform:translateY(-1px)}
+    .setup-warning{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:.5rem;padding:.75rem 1rem;font-size:.78rem;color:#fcd34d;margin-bottom:1.25rem}
+
+    /* ADMIN */
     #admin-screen{display:none}
     .admin-layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
-
-    /* SIDEBAR */
     .sidebar{background:var(--card);border-right:1px solid var(--border);padding:1.5rem;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
     .sidebar-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
     .sidebar-logo-icon{width:2.25rem;height:2.25rem;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:.9rem}
-    .sidebar-logo-text{font-family:'Space Mono',monospace;font-size:.9rem;font-weight:700;color:var(--text);line-height:1.2}
+    .sidebar-logo-text{font-family:'Space Mono',monospace;font-size:.9rem;font-weight:700;line-height:1.2}
     .sidebar-logo-sub{font-size:.65rem;color:var(--text3)}
     .sidebar-section{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem;margin-top:1.25rem;padding-left:.5rem}
     .sidebar-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem .75rem;border-radius:.625rem;background:none;border:none;color:var(--text2);font-family:'Inter',sans-serif;font-size:.875rem;cursor:pointer;width:100%;text-align:left;transition:all .2s;margin-bottom:.15rem}
-    .sidebar-btn:hover{background:var(--bg2);color:var(--text)}
-    .sidebar-btn.active{background:rgba(59,130,246,.15);color:var(--blue2);border-left:2px solid var(--blue)}
+    .sidebar-btn:hover{background:var(--bg2);color:var(--text)}.sidebar-btn.active{background:rgba(59,130,246,.15);color:var(--blue2);border-left:2px solid var(--blue)}
     .sidebar-btn .icon{width:1.5rem;height:1.5rem;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
     .sidebar-spacer{flex:1}
     .sidebar-user{padding:.75rem;background:var(--bg2);border:1px solid var(--border);border-radius:.75rem;display:flex;align-items:center;gap:.75rem}
     .sidebar-avatar{width:2.25rem;height:2.25rem;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;flex-shrink:0}
-    .sidebar-username{font-size:.8rem;font-weight:600;color:var(--text)}
-    .sidebar-role{font-size:.65rem;color:var(--text3)}
-    .logout-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:.75rem;margin-left:auto;padding:.25rem;transition:color .2s}
+    .sidebar-username{font-size:.8rem;font-weight:600}.sidebar-role{font-size:.65rem;color:var(--text3)}
+    .logout-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:.75rem;margin-left:auto;transition:color .2s}
     .logout-btn:hover{color:var(--red)}
-
-    /* MAIN */
     .admin-main{padding:2rem;overflow-y:auto}
-    .page-header{margin-bottom:2rem}
-    .page-title{font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
-    .page-sub{font-size:.875rem;color:var(--text2)}
     .save-bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);padding:.75rem 0;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
-    .save-bar-msg{font-size:.8rem;color:var(--text3);font-family:'Space Mono',monospace}
+    .save-msg{font-size:.78rem;color:var(--text3);font-family:'Space Mono',monospace}
+    .save-msg.ok{color:var(--green)}.save-msg.err{color:var(--red)}.save-msg.loading{color:var(--yellow)}
     .save-btn{display:flex;align-items:center;gap:.5rem;padding:.6rem 1.25rem;background:var(--blue);color:#fff;border:none;border-radius:.625rem;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s}
-    .save-btn:hover{background:var(--blue2);transform:translateY(-1px)}
-    .save-btn.saved{background:var(--green)}
+    .save-btn:hover{background:var(--blue2);transform:translateY(-1px)}.save-btn:disabled{opacity:.5;cursor:not-allowed}
     .preview-btn{display:flex;align-items:center;gap:.5rem;padding:.6rem 1.25rem;background:var(--bg3);color:var(--text2);border:1px solid var(--border);border-radius:.625rem;font-weight:600;font-size:.85rem;cursor:pointer;text-decoration:none;transition:all .2s;margin-right:.5rem}
     .preview-btn:hover{border-color:var(--blue2);color:var(--blue2)}
-
-    /* PANEL */
-    .panel{display:none}
-    .panel.active{display:block}
+    .panel{display:none}.panel.active{display:block}
+    .page-header{margin-bottom:2rem}
+    .page-title{font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;margin-bottom:.3rem}
+    .page-sub{font-size:.875rem;color:var(--text2)}
     .section-card{background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.75rem;margin-bottom:1.5rem}
     .section-card-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
     .section-card-icon{padding:.5rem;background:rgba(59,130,246,.1);border-radius:.5rem;color:var(--blue);font-size:1rem}
-    .section-card-title{font-family:'Space Mono',monospace;font-size:.9rem;font-weight:700;color:var(--text)}
+    .section-card-title{font-family:'Space Mono',monospace;font-size:.9rem;font-weight:700}
     .section-card-sub{font-size:.75rem;color:var(--text3)}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
     .form-group{margin-bottom:1rem}
@@ -77,86 +85,86 @@
     .form-hint{font-size:.7rem;color:var(--text3);margin-top:.25rem}
     .form-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:.625rem;padding:.7rem .9rem;color:var(--text);font-family:'Inter',sans-serif;font-size:.875rem;outline:none;transition:all .2s}
     .form-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,.1)}
-    textarea.form-input{resize:vertical;min-height:100px;line-height:1.6}
-
-    /* REPEATABLE ITEMS */
+    textarea.form-input{resize:vertical;min-height:90px;line-height:1.6}
     .item-list{display:flex;flex-direction:column;gap:.75rem}
     .item-card{background:var(--bg2);border:1px solid var(--border);border-radius:.875rem;overflow:hidden}
     .item-card-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;cursor:pointer;user-select:none;transition:background .2s}
     .item-card-header:hover{background:var(--bg3)}
-    .item-card-title{font-weight:600;font-size:.875rem;color:var(--text)}
-    .item-card-meta{font-size:.75rem;color:var(--text3);margin-top:.1rem}
-    .item-card-actions{display:flex;gap:.4rem}
+    .item-title{font-weight:600;font-size:.875rem}.item-meta{font-size:.72rem;color:var(--text3);margin-top:.1rem}
     .ic-btn{background:none;border:1px solid var(--border);border-radius:.375rem;padding:.3rem .5rem;cursor:pointer;font-size:.75rem;transition:all .2s;color:var(--text2)}
     .ic-btn:hover{border-color:var(--blue2);color:var(--blue2)}
-    .ic-btn.del:hover{border-color:var(--red);color:var(--red)}
-    .item-card-body{padding:1rem;border-top:1px solid var(--border);display:none}
-    .item-card-body.open{display:block}
-    .add-btn{display:flex;align-items:center;gap:.5rem;padding:.65rem 1rem;background:rgba(59,130,246,.08);border:1px dashed var(--border2);border-radius:.75rem;color:var(--blue2);font-size:.85rem;font-weight:600;cursor:pointer;width:100%;justify-content:center;transition:all .2s;font-family:'Inter',sans-serif}
+    .item-body{padding:1rem;border-top:1px solid var(--border);display:none}
+    .item-body.open{display:block}
+    .add-btn{display:flex;align-items:center;gap:.5rem;padding:.65rem 1rem;background:rgba(59,130,246,.08);border:1px dashed var(--border2);border-radius:.75rem;color:var(--blue2);font-size:.85rem;font-weight:600;cursor:pointer;width:100%;justify-content:center;transition:all .2s;font-family:'Inter',sans-serif;margin-top:1rem}
     .add-btn:hover{background:rgba(59,130,246,.15);border-color:var(--blue)}
-    .del-item-btn{display:flex;align-items:center;gap:.4rem;padding:.4rem .75rem;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:.5rem;color:#fca5a5;font-size:.75rem;cursor:pointer;margin-top:1rem;transition:all .2s;font-family:'Inter',sans-serif}
-    .del-item-btn:hover{background:rgba(239,68,68,.15)}
-    .bullet-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:.75rem}
-    .bullet-row{display:flex;gap:.5rem;align-items:flex-start}
+    .del-btn{display:flex;align-items:center;gap:.4rem;padding:.4rem .75rem;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:.5rem;color:#fca5a5;font-size:.75rem;cursor:pointer;margin-top:1rem;transition:all .2s;font-family:'Inter',sans-serif}
+    .del-btn:hover{background:rgba(239,68,68,.15)}
+    .bullet-row{display:flex;gap:.5rem;align-items:flex-start;margin-bottom:.5rem}
     .bullet-input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:.5rem;padding:.5rem .75rem;color:var(--text);font-size:.8rem;outline:none;font-family:'Inter',sans-serif;transition:border-color .2s}
     .bullet-input:focus{border-color:var(--blue)}
     .bullet-del{background:none;border:1px solid var(--border);border-radius:.375rem;padding:.4rem .5rem;cursor:pointer;color:var(--text3);transition:all .2s;flex-shrink:0}
     .bullet-del:hover{border-color:var(--red);color:var(--red)}
-    .add-bullet-btn{background:none;border:none;color:var(--blue2);font-size:.78rem;cursor:pointer;padding:.25rem 0;font-family:'Inter',sans-serif;transition:color .2s}
-    .add-bullet-btn:hover{color:var(--blue)}
-
-    /* SKILLS TAG EDITOR */
-    .tag-editor{background:var(--bg);border:1px solid var(--border);border-radius:.625rem;padding:.75rem;min-height:60px;display:flex;flex-wrap:wrap;gap:.4rem;cursor:text;transition:border-color .2s}
-    .tag-editor:focus-within{border-color:var(--blue)}
-    .tag-chip{display:flex;align-items:center;gap:.3rem;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:100px;padding:.2rem .6rem;font-size:.75rem;color:var(--blue2);font-family:'Space Mono',monospace}
-    .tag-chip button{background:none;border:none;color:var(--blue2);cursor:pointer;font-size:.9rem;line-height:1;padding:0;opacity:.7;transition:opacity .2s}
-    .tag-chip button:hover{opacity:1}
-    .tag-input{background:none;border:none;outline:none;color:var(--text);font-size:.8rem;font-family:'Inter',sans-serif;min-width:80px;flex:1}
-
-    /* DASHBOARD OVERVIEW */
+    .add-bullet{background:none;border:none;color:var(--blue2);font-size:.78rem;cursor:pointer;font-family:'Inter',sans-serif;transition:color .2s;padding:.2rem 0}
+    .add-bullet:hover{color:var(--blue)}
     .dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
     .dash-card{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1.25rem}
-    .dash-card-icon{font-size:1.5rem;margin-bottom:.75rem}
-    .dash-card-num{font-family:'Space Mono',monospace;font-size:1.75rem;font-weight:700;color:var(--text)}
-    .dash-card-lbl{font-size:.8rem;color:var(--text3);margin-top:.2rem}
-    .dash-card-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .6rem;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:100px;font-size:.7rem;color:var(--green);margin-top:.5rem}
+    .dash-num{font-family:'Space Mono',monospace;font-size:1.75rem;font-weight:700}
+    .dash-lbl{font-size:.78rem;color:var(--text3);margin-top:.2rem}
+    .dash-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .6rem;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:100px;font-size:.7rem;color:var(--green);margin-top:.5rem}
+    .status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
     @media(max-width:700px){.dash-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}}
-    @media(max-width:900px){.admin-layout{grid-template-columns:1fr}.sidebar{display:none}.admin-main{padding:1rem}}
-    .mobile-nav-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);padding:.5rem;z-index:100;gap:.25rem}
-    @media(max-width:900px){.mobile-nav-bar{display:flex}}
+    @media(max-width:900px){.admin-layout{grid-template-columns:1fr}.sidebar{display:none}}
+    .mob-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);padding:.5rem;z-index:100;gap:.25rem}
+    @media(max-width:900px){.mob-bar{display:flex}}
     .mob-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:.2rem;padding:.5rem .25rem;background:none;border:none;color:var(--text3);cursor:pointer;font-size:.6rem;font-family:'Space Mono',monospace;border-radius:.5rem;transition:all .2s}
     .mob-btn.active,.mob-btn:hover{color:var(--blue2);background:rgba(59,130,246,.08)}
-    .mob-btn-icon{font-size:1.1rem}
   </style>
 </head>
 <body>
 
-<!-- ═══ LOGIN SCREEN ═══ -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">
       <div class="login-logo-icon">🔐</div>
-      <div><div class="login-title">Portfolio Admin</div><div class="login-sub">Restricted Access</div></div>
+      <div><div class="login-title">Portfolio Admin</div><div class="login-sub">Private access only</div></div>
     </div>
-    <div class="login-error" id="loginError">Invalid credentials. Please try again.</div>
-    <div class="login-field">
-      <label class="login-label">Username</label>
-      <input type="text" class="login-input" id="loginUser" placeholder="Enter username" autocomplete="username"/>
-    </div>
-    <div class="login-field">
-      <label class="login-label">Password</label>
-      <input type="password" class="login-input" id="loginPass" placeholder="Enter password" autocomplete="current-password"/>
-    </div>
+    <div class="login-error" id="loginError">Invalid credentials. Access denied.</div>
+    <div class="login-field"><label class="login-label">Username</label><input type="text" class="login-input" id="loginUser" autocomplete="username"/></div>
+    <div class="login-field"><label class="login-label">Password</label><input type="password" class="login-input" id="loginPass" autocomplete="current-password"/></div>
     <button class="login-btn" onclick="doLogin()">Sign In →</button>
-    <div class="login-note">⚠ Private access only. Unauthorized access is prohibited.</div>
+    <div class="login-note">⚠ Unauthorized access is strictly prohibited.</div>
   </div>
 </div>
 
-<!-- ═══ ADMIN SCREEN ═══ -->
+<!-- GITHUB SETUP SCREEN -->
+<div id="setup-screen">
+  <div class="setup-card">
+    <div style="font-size:2rem;margin-bottom:1rem">🔧</div>
+    <div class="setup-title">Connect GitHub to Go Live</div>
+    <div class="setup-sub">To publish your edits to the live site, this admin needs a GitHub Personal Access Token. This is a one-time setup stored only in your browser.</div>
+    <div class="setup-warning">⚠ Your token is saved locally in this browser only. Never share it with anyone.</div>
+    <div class="setup-steps">
+      <strong style="color:var(--text)">How to get a token:</strong>
+      <ol>
+        <li>Go to <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a></li>
+        <li>Give it a name like <em>Portfolio Admin</em></li>
+        <li>Set expiration to <em>No expiration</em></li>
+        <li>Under <strong>Scopes</strong>, check only ✅ <strong>repo</strong></li>
+        <li>Click <strong>Generate token</strong> and paste it below</li>
+      </ol>
+    </div>
+    <div class="setup-field"><label class="setup-label">GitHub Personal Access Token</label><input type="password" class="setup-input" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/><div class="setup-hint">Starts with ghp_ — keep this private</div></div>
+    <div class="setup-field"><label class="setup-label">GitHub Username</label><input type="text" class="setup-input" id="ghOwner" placeholder="RDrahul123"/></div>
+    <div class="setup-field"><label class="setup-label">Repository Name</label><input type="text" class="setup-input" id="ghRepo" placeholder="Portfolio"/></div>
+    <button class="setup-btn" onclick="saveGHConfig()">✅ Connect & Continue</button>
+  </div>
+</div>
+
+<!-- ADMIN -->
 <div id="admin-screen">
   <div class="admin-layout">
-
-    <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-logo">
         <div class="sidebar-logo-icon">⚙</div>
@@ -171,125 +179,135 @@
       <button class="sidebar-btn" onclick="showPanel('projects',this)"><span class="icon">🗂</span> Projects</button>
       <button class="sidebar-btn" onclick="showPanel('skills',this)"><span class="icon">🛠</span> Skills</button>
       <button class="sidebar-btn" onclick="showPanel('education',this)"><span class="icon">🎓</span> Education</button>
-      <div class="sidebar-section">Actions</div>
-      <button class="sidebar-btn" onclick="exportData()"><span class="icon">📥</span> Export JSON</button>
-      <button class="sidebar-btn" onclick="importData()"><span class="icon">📤</span> Import JSON</button>
-      <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(this)"/>
+      <div class="sidebar-section">Settings</div>
+      <button class="sidebar-btn" onclick="showPanel('settings',this)"><span class="icon">🔑</span> GitHub Settings</button>
       <div class="sidebar-spacer"></div>
       <div class="sidebar-user">
         <div class="sidebar-avatar">P</div>
         <div><div class="sidebar-username">prakrit0566</div><div class="sidebar-role">Administrator</div></div>
-        <button class="logout-btn" onclick="doLogout()" title="Logout">✕</button>
+        <button class="logout-btn" onclick="doLogout()">✕</button>
       </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
     <main class="admin-main">
       <div class="save-bar">
-        <span class="save-bar-msg" id="saveMsg">Changes are auto-saved to your browser.</span>
+        <span class="save-msg" id="saveMsg"><span class="status-dot"></span> Ready to publish</span>
         <div style="display:flex;gap:.5rem;align-items:center">
-          <a href="index.html" target="_blank" class="preview-btn">👁 Preview Site</a>
-          <button class="save-btn" id="saveBtn" onclick="saveAll()">💾 Save Changes</button>
+          <a href="index.html" target="_blank" class="preview-btn">👁 Preview</a>
+          <button class="save-btn" id="saveBtn" onclick="publishToGitHub()">🚀 Publish Changes</button>
         </div>
       </div>
 
-      <!-- ── DASHBOARD ── -->
+      <!-- DASHBOARD -->
       <div class="panel active" id="panel-dashboard">
-        <div class="page-header"><div class="page-title">Dashboard</div><div class="page-sub">Overview of your portfolio content</div></div>
+        <div class="page-header"><div class="page-title">Dashboard</div><div class="page-sub">Portfolio content overview</div></div>
         <div class="dash-grid">
-          <div class="dash-card"><div class="dash-card-icon">💼</div><div class="dash-card-num" id="dash-exp-count">3</div><div class="dash-card-lbl">Work Experiences</div><div class="dash-card-badge">✓ Active</div></div>
-          <div class="dash-card"><div class="dash-card-icon">🗂</div><div class="dash-card-num" id="dash-proj-count">2</div><div class="dash-card-lbl">Projects</div><div class="dash-card-badge">✓ Active</div></div>
-          <div class="dash-card"><div class="dash-card-icon">🛠</div><div class="dash-card-num" id="dash-skills-count">6</div><div class="dash-card-lbl">Skill Categories</div><div class="dash-card-badge">✓ Active</div></div>
-          <div class="dash-card"><div class="dash-card-icon">🎓</div><div class="dash-card-num" id="dash-edu-count">2</div><div class="dash-card-lbl">Education Entries</div><div class="dash-card-badge">✓ Active</div></div>
-          <div class="dash-card"><div class="dash-card-icon">🌐</div><div class="dash-card-num">1</div><div class="dash-card-lbl">Live Site</div><div class="dash-card-badge">✓ Online</div></div>
-          <div class="dash-card"><div class="dash-card-icon">📝</div><div class="dash-card-num" id="dash-last-save">—</div><div class="dash-card-lbl">Last Saved</div></div>
+          <div class="dash-card"><div style="font-size:1.5rem;margin-bottom:.5rem">💼</div><div class="dash-num" id="d-exp">—</div><div class="dash-lbl">Experiences</div><div class="dash-badge">✓ Active</div></div>
+          <div class="dash-card"><div style="font-size:1.5rem;margin-bottom:.5rem">🗂</div><div class="dash-num" id="d-proj">—</div><div class="dash-lbl">Projects</div><div class="dash-badge">✓ Active</div></div>
+          <div class="dash-card"><div style="font-size:1.5rem;margin-bottom:.5rem">🛠</div><div class="dash-num" id="d-skills">—</div><div class="dash-lbl">Skill Categories</div><div class="dash-badge">✓ Active</div></div>
+          <div class="dash-card"><div style="font-size:1.5rem;margin-bottom:.5rem">🎓</div><div class="dash-num" id="d-edu">—</div><div class="dash-lbl">Education</div><div class="dash-badge">✓ Active</div></div>
+          <div class="dash-card"><div style="font-size:1.5rem;margin-bottom:.5rem">🌐</div><div class="dash-num">Live</div><div class="dash-lbl">GitHub Pages</div><div class="dash-badge"><span class="status-dot"></span> Online</div></div>
+          <div class="dash-card"><div style="font-size:1.5rem;margin-bottom:.5rem">📝</div><div class="dash-num" id="d-saved" style="font-size:1rem">Never</div><div class="dash-lbl">Last Published</div></div>
         </div>
         <div class="section-card">
-          <div class="section-card-header"><div class="section-card-icon">💡</div><div><div class="section-card-title">Quick Guide</div><div class="section-card-sub">How the back office works</div></div></div>
-          <div style="display:flex;flex-direction:column;gap:.75rem;font-size:.875rem;color:var(--text2)">
-            <p>1. Use the sidebar to navigate to the section you want to edit.</p>
-            <p>2. Make your changes in the forms — everything is editable.</p>
-            <p>3. Click <strong style="color:var(--blue2)">Save Changes</strong> to apply. Changes are stored in your browser and shown live on the portfolio.</p>
-            <p>4. Use <strong style="color:var(--blue2)">Export JSON</strong> to back up all your data, and <strong style="color:var(--blue2)">Import JSON</strong> to restore it on a new device.</p>
-            <p style="color:var(--yellow)">⚠ Since this runs on GitHub Pages (no server), data is stored in your browser's localStorage. Always export a backup!</p>
+          <div class="section-card-header"><div class="section-card-icon">💡</div><div><div class="section-card-title">How Publishing Works</div><div class="section-card-sub">The flow from edit to live site</div></div></div>
+          <div style="font-size:.875rem;color:var(--text2);line-height:1.8;display:flex;flex-direction:column;gap:.5rem">
+            <p>1. Make your edits in any section using the sidebar.</p>
+            <p>2. Click <strong style="color:var(--blue2)">🚀 Publish Changes</strong> — this commits <code style="background:var(--bg3);padding:.1rem .4rem;border-radius:.25rem;font-size:.8rem">data.json</code> directly to your GitHub repo.</p>
+            <p>3. GitHub Actions automatically rebuilds and deploys the site.</p>
+            <p>4. Your live portfolio updates within ~60 seconds. ✅</p>
+            <p style="color:var(--yellow)">⚠ First time? Go to <strong>GitHub Settings</strong> in the sidebar to enter your token.</p>
           </div>
         </div>
       </div>
 
-      <!-- ── HERO ── -->
+      <!-- HERO -->
       <div class="panel" id="panel-hero">
-        <div class="page-header"><div class="page-title">Hero / Profile</div><div class="page-sub">Edit the main landing section</div></div>
+        <div class="page-header"><div class="page-title">Hero / Profile</div><div class="page-sub">Main landing section</div></div>
         <div class="section-card">
           <div class="section-card-header"><div class="section-card-icon">👤</div><div><div class="section-card-title">Profile Info</div></div></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Display Name</label><input type="text" class="form-input" id="f-heroName" placeholder="Rahul"/><div class="form-hint">Short name shown in the hero headline</div></div>
-            <div class="form-group"><label class="form-label">Job Title</label><input type="text" class="form-input" id="f-heroRole" placeholder="Data Science Analyst & Engineer"/></div>
+            <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" id="f-name" placeholder="Rahul"/></div>
+            <div class="form-group"><label class="form-label">Job Title / Role</label><input type="text" class="form-input" id="f-role" placeholder="Data Science Analyst & Engineer"/></div>
           </div>
-          <div class="form-group"><label class="form-label">Bio / Tagline</label><textarea class="form-input" id="f-heroBio" rows="4" placeholder="I transform complex datasets..."></textarea></div>
-          <div class="form-group"><label class="form-label">Profile Photo URL</label><input type="text" class="form-input" id="f-photoUrl" placeholder="https://..."/><div class="form-hint">Direct image URL for your profile photo</div></div>
+          <div class="form-group"><label class="form-label">Bio (shown on homepage)</label><textarea class="form-input" id="f-bio" rows="4"></textarea></div>
+          <div class="form-group"><label class="form-label">Profile Photo URL</label><input type="text" class="form-input" id="f-photo" placeholder="https://..."/><div class="form-hint">Direct image URL — use a GitHub raw URL or any public image link</div></div>
         </div>
       </div>
 
-      <!-- ── ABOUT ── -->
+      <!-- ABOUT -->
       <div class="panel" id="panel-about">
-        <div class="page-header"><div class="page-title">About Section</div><div class="page-sub">Edit the about me content</div></div>
+        <div class="page-header"><div class="page-title">About Section</div></div>
         <div class="section-card">
-          <div class="section-card-header"><div class="section-card-icon">🙋</div><div><div class="section-card-title">About Text</div></div></div>
-          <div class="form-group"><label class="form-label">Paragraph 1</label><textarea class="form-input" id="f-aboutP1" rows="4"></textarea></div>
-          <div class="form-group"><label class="form-label">Paragraph 2</label><textarea class="form-input" id="f-aboutP2" rows="4"></textarea></div>
+          <div class="section-card-header"><div class="section-card-icon">🙋</div><div><div class="section-card-title">About Me Text</div></div></div>
+          <div class="form-group"><label class="form-label">Paragraph 1</label><textarea class="form-input" id="f-p1" rows="4"></textarea></div>
+          <div class="form-group"><label class="form-label">Paragraph 2</label><textarea class="form-input" id="f-p2" rows="4"></textarea></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Stat 1 (e.g. "3+")</label><input type="text" class="form-input" id="f-statExp" placeholder="3+"/><div class="form-hint">Years Experience</div></div>
-            <div class="form-group"><label class="form-label">Stat 2 (e.g. "100K+")</label><input type="text" class="form-input" id="f-statData" placeholder="100K+"/><div class="form-hint">Records Processed Weekly</div></div>
+            <div class="form-group"><label class="form-label">Stat — Years Experience</label><input type="text" class="form-input" id="f-statexp" placeholder="3+"/></div>
+            <div class="form-group"><label class="form-label">Stat — Records / Week</label><input type="text" class="form-input" id="f-statdata" placeholder="100K+"/></div>
           </div>
         </div>
       </div>
 
-      <!-- ── EXPERIENCE ── -->
+      <!-- EXPERIENCE -->
       <div class="panel" id="panel-experience">
-        <div class="page-header"><div class="page-title">Experience</div><div class="page-sub">Add, edit or remove work experiences</div></div>
+        <div class="page-header"><div class="page-title">Experience</div><div class="page-sub">Work history shown on timeline</div></div>
         <div class="item-list" id="exp-list"></div>
-        <button class="add-btn" onclick="addExpItem()" style="margin-top:1rem">+ Add Experience</button>
+        <button class="add-btn" onclick="addExp()">+ Add Experience</button>
       </div>
 
-      <!-- ── PROJECTS ── -->
+      <!-- PROJECTS -->
       <div class="panel" id="panel-projects">
-        <div class="page-header"><div class="page-title">Projects</div><div class="page-sub">Manage your featured projects</div></div>
+        <div class="page-header"><div class="page-title">Projects</div><div class="page-sub">Featured work shown on portfolio</div></div>
         <div class="item-list" id="proj-list"></div>
-        <button class="add-btn" onclick="addProjItem()" style="margin-top:1rem">+ Add Project</button>
+        <button class="add-btn" onclick="addProj()">+ Add Project</button>
       </div>
 
-      <!-- ── SKILLS ── -->
+      <!-- SKILLS -->
       <div class="panel" id="panel-skills">
-        <div class="page-header"><div class="page-title">Skills</div><div class="page-sub">Edit skill categories and items</div></div>
+        <div class="page-header"><div class="page-title">Skills</div><div class="page-sub">Skill categories and tech items</div></div>
         <div class="item-list" id="skills-list"></div>
-        <button class="add-btn" onclick="addSkillGroup()" style="margin-top:1rem">+ Add Skill Category</button>
+        <button class="add-btn" onclick="addSkill()">+ Add Skill Category</button>
       </div>
 
-      <!-- ── EDUCATION ── -->
+      <!-- EDUCATION -->
       <div class="panel" id="panel-education">
-        <div class="page-header"><div class="page-title">Education</div><div class="page-sub">Edit education & certifications</div></div>
+        <div class="page-header"><div class="page-title">Education</div><div class="page-sub">Degrees and qualifications</div></div>
         <div class="item-list" id="edu-list"></div>
-        <button class="add-btn" onclick="addEduItem()" style="margin-top:1rem">+ Add Education Entry</button>
+        <button class="add-btn" onclick="addEdu()">+ Add Education Entry</button>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="panel" id="panel-settings">
+        <div class="page-header"><div class="page-title">GitHub Settings</div><div class="page-sub">Configure publishing credentials</div></div>
+        <div class="section-card">
+          <div class="section-card-header"><div class="section-card-icon">🔑</div><div><div class="section-card-title">GitHub API Connection</div><div class="section-card-sub">Required to publish edits to your live site</div></div></div>
+          <div class="setup-warning" style="margin-bottom:1.25rem">⚠ Your token is stored only in this browser's localStorage. Do not use a token with more than <strong>repo</strong> scope.</div>
+          <div class="form-group"><label class="form-label">Personal Access Token</label><input type="password" class="form-input" id="s-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/><div class="form-hint">GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)</div></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">GitHub Username</label><input type="text" class="form-input" id="s-owner" placeholder="RDrahul123"/></div>
+            <div class="form-group"><label class="form-label">Repository Name</label><input type="text" class="form-input" id="s-repo" placeholder="Portfolio"/></div>
+          </div>
+          <button class="save-btn" style="background:var(--green)" onclick="saveSettings()">Save Settings</button>
+          <div id="settings-msg" style="margin-top:.75rem;font-size:.8rem;color:var(--green);display:none">✅ Settings saved!</div>
+        </div>
       </div>
 
     </main>
   </div>
 
-  <!-- Mobile nav -->
-  <div class="mobile-nav-bar">
-    <button class="mob-btn active" onclick="showPanel('dashboard',this)"><span class="mob-btn-icon">📊</span>Dash</button>
-    <button class="mob-btn" onclick="showPanel('hero',this)"><span class="mob-btn-icon">👤</span>Hero</button>
-    <button class="mob-btn" onclick="showPanel('experience',this)"><span class="mob-btn-icon">💼</span>Exp</button>
-    <button class="mob-btn" onclick="showPanel('projects',this)"><span class="mob-btn-icon">🗂</span>Projects</button>
-    <button class="mob-btn" onclick="showPanel('skills',this)"><span class="mob-btn-icon">🛠</span>Skills</button>
-    <button class="mob-btn" onclick="showPanel('education',this)"><span class="mob-btn-icon">🎓</span>Edu</button>
+  <div class="mob-bar">
+    <button class="mob-btn active" onclick="showPanel('dashboard',this)"><span>📊</span>Dash</button>
+    <button class="mob-btn" onclick="showPanel('hero',this)"><span>👤</span>Hero</button>
+    <button class="mob-btn" onclick="showPanel('experience',this)"><span>💼</span>Exp</button>
+    <button class="mob-btn" onclick="showPanel('projects',this)"><span>🗂</span>Proj</button>
+    <button class="mob-btn" onclick="showPanel('skills',this)"><span>🛠</span>Skills</button>
+    <button class="mob-btn" onclick="showPanel('education',this)"><span>🎓</span>Edu</button>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════
-// AUTH
-// ═══════════════════════════════════════════════
+// ═══ CREDENTIALS ══════════════════════════════
 const CREDS = { user: 'prakrit0566', pass: 'Prakrit@0566' };
 
 function doLogin() {
@@ -298,8 +316,7 @@ function doLogin() {
   if (u === CREDS.user && p === CREDS.pass) {
     sessionStorage.setItem('admin_auth', '1');
     document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('admin-screen').style.display = 'block';
-    initAdmin();
+    checkGHConfig();
   } else {
     document.getElementById('loginError').style.display = 'block';
     document.getElementById('loginPass').value = '';
@@ -308,37 +325,69 @@ function doLogin() {
 document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 document.getElementById('loginUser').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('loginPass').focus(); });
 
-function doLogout() {
-  sessionStorage.removeItem('admin_auth');
-  location.reload();
-}
+function doLogout() { sessionStorage.removeItem('admin_auth'); location.reload(); }
 
 if (sessionStorage.getItem('admin_auth') === '1') {
   document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('admin-screen').style.display = 'block';
-  window.addEventListener('DOMContentLoaded', initAdmin);
+  window.addEventListener('DOMContentLoaded', checkGHConfig);
 }
 
-// ═══════════════════════════════════════════════
-// DATA STORE — default values
-// ═══════════════════════════════════════════════
+// ═══ GITHUB CONFIG ════════════════════════════
+function getGH() {
+  return {
+    token: localStorage.getItem('gh_token') || '',
+    owner: localStorage.getItem('gh_owner') || 'RDrahul123',
+    repo: localStorage.getItem('gh_repo') || 'Portfolio'
+  };
+}
+
+function checkGHConfig() {
+  const gh = getGH();
+  if (!gh.token) {
+    // Fill setup defaults
+    document.getElementById('ghOwner').value = gh.owner;
+    document.getElementById('ghRepo').value = gh.repo;
+    document.getElementById('setup-screen').style.display = 'flex';
+  } else {
+    startAdmin();
+  }
+}
+
+function saveGHConfig() {
+  const token = document.getElementById('ghToken').value.trim();
+  const owner = document.getElementById('ghOwner').value.trim();
+  const repo = document.getElementById('ghRepo').value.trim();
+  if (!token || !owner || !repo) { alert('Please fill all fields.'); return; }
+  localStorage.setItem('gh_token', token);
+  localStorage.setItem('gh_owner', owner);
+  localStorage.setItem('gh_repo', repo);
+  document.getElementById('setup-screen').style.display = 'none';
+  startAdmin();
+}
+
+function saveSettings() {
+  const token = document.getElementById('s-token').value.trim();
+  const owner = document.getElementById('s-owner').value.trim();
+  const repo = document.getElementById('s-repo').value.trim();
+  if (token) localStorage.setItem('gh_token', token);
+  if (owner) localStorage.setItem('gh_owner', owner);
+  if (repo) localStorage.setItem('gh_repo', repo);
+  document.getElementById('settings-msg').style.display = 'block';
+  setTimeout(() => document.getElementById('settings-msg').style.display = 'none', 2000);
+}
+
+// ═══ DATA STORE ═══════════════════════════════
 const DEFAULTS = {
-  heroName: 'Rahul',
-  heroRole: 'Data Science Analyst & Software Engineer',
-  heroBio: 'I transform complex datasets into actionable insights and build robust, scalable applications. Specializing in Python, Machine Learning, and Cloud Architecture, I bridge the gap between raw data and strategic decision-making.',
-  photoUrl: 'https://raw.githubusercontent.com/RDrahul123/RDrahul123/main/20251206_111856-IMG_STYLE~2.jpg',
-  aboutP1: 'I am a passionate Data Science Analyst and Software Engineer with a knack for turning raw data into strategic assets. My expertise lies in building predictive models, optimizing data pipelines, and developing scalable software solutions.',
-  aboutP2: 'From automating 100K+ record queries to improving decision-making efficiency by 15%, I focus on tangible impact. I leverage Python, Machine Learning, and Cloud Technologies to solve complex business challenges.',
-  statExp: '3+',
-  statData: '100K+',
+  hero: { name:'Rahul', role:'Data Science Analyst & Software Engineer', bio:'I transform complex datasets into actionable insights and build robust, scalable applications. Specializing in Python, Machine Learning, and Cloud Architecture, I bridge the gap between raw data and strategic decision-making.', photoUrl:'https://raw.githubusercontent.com/RDrahul123/RDrahul123/main/20251206_111856-IMG_STYLE~2.jpg' },
+  about: { p1:'I am a passionate Data Science Analyst and Software Engineer with a knack for turning raw data into strategic assets. My expertise lies in building predictive models, optimizing data pipelines, and developing scalable software solutions.', p2:'From automating 100K+ record queries to improving decision-making efficiency by 15%, I focus on tangible impact. I leverage Python, Machine Learning, and Cloud Technologies to solve complex business challenges.', statExp:'3+', statData:'100K+' },
   experience: [
-    { id:'e1', role:'Data Science Analyst', company:'Samatrix Consulting Private Limited', period:'Sept 2024 – Present', bullets:['Interpreted datasets to extract insights that led to a 15% improvement in data-driven decision-making.','Standardized data cleaning procedures using Python and Pandas, achieving 99.9% accuracy.','Queried and examined over 100K records weekly using SQL and Python, cutting retrieval time by 20%.','Audited data quality, identifying and resolving 95% of data discrepancies.'] },
-    { id:'e2', role:'Software Development Engineer', company:'Antardrishti Foundation', period:'Oct 2022 – Apr 2024', bullets:['Directed a team of three in developing responsive websites, increasing user engagement by 20%.','Instituted automated code validation and CI pipelines, cutting bugs by 25%.','Boosted system efficiency by cutting load times by 25% using C++ and Python.'] },
-    { id:'e3', role:'Software Development Intern', company:'TCS iON', period:'Jun 2022 – Sept 2022', bullets:['Engineered blockchain application solutions with Python and Solidity, improving code efficiency by 30%.','Orchestrated Docker deployments on AWS, improving transaction speed by 15%.'] }
+    { id:'e1', role:'Data Science Analyst', company:'Samatrix Consulting Private Limited', period:'Sept 2024 – Present', bullets:['Interpreted datasets to extract insights that led to a 15% improvement in data-driven decision-making.','Standardized data cleaning using Python and Pandas, achieving 99.9% accuracy.','Queried over 100K records weekly using SQL and Python, cutting retrieval time by 20%.','Audited data quality, identifying and resolving 95% of data discrepancies.'] },
+    { id:'e2', role:'Software Development Engineer', company:'Antardrishti Foundation', period:'Oct 2022 – Apr 2024', bullets:['Directed a team of three in developing responsive websites, increasing user engagement by 20%.','Instituted CI pipelines, cutting bugs by 25%.','Boosted system efficiency, cutting load times by 25% using C++ and Python.'] },
+    { id:'e3', role:'Software Development Intern', company:'TCS iON', period:'Jun 2022 – Sept 2022', bullets:['Engineered blockchain solutions with Python and Solidity, improving code efficiency by 30%.','Orchestrated Docker deployments on AWS, improving transaction speed by 15%.'] }
   ],
   projects: [
     { id:'p1', title:'Sales Analysis Dashboard', category:'Data Analysis', desc:'An interactive Power BI dashboard analyzing 12 months of sales data. Segmented product data into 15+ subcategories and mapped regional profits across 50 zones.', tags:'Power BI,Excel,JSON,Data Analytics', github:'https://github.com/RDrahul123/Sales-Dashboard', image:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop' },
-    { id:'p2', title:'Financial Market Trend Predictor', category:'Machine Learning', desc:'A Python-based analytics engine that evaluated stock and cryptocurrency trends, achieving a 15% increase in predictive accuracy through machine learning models.', tags:'Python,Machine Learning,Pandas,Matplotlib', github:'https://github.com/RDrahul123/Stock-Analysis', image:'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop' }
+    { id:'p2', title:'Financial Market Trend Predictor', category:'Machine Learning', desc:'A Python-based analytics engine evaluating stock and crypto trends, achieving a 15% increase in predictive accuracy through ML models.', tags:'Python,Machine Learning,Pandas,Matplotlib', github:'https://github.com/RDrahul123/Stock-Analysis', image:'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop' }
   ],
   skills: [
     { id:'s1', category:'Programming Languages', items:'Python,C++,Java' },
@@ -355,337 +404,186 @@ const DEFAULTS = {
 };
 
 function loadData() {
-  try { return Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem('portfolio_admin') || '{}')); }
+  try { return Object.assign({}, DEFAULTS, JSON.parse(localStorage.getItem('portfolio_admin')||'{}')); }
   catch(e) { return Object.assign({}, DEFAULTS); }
 }
 
-function getData() { return window._adminData || (window._adminData = loadData()); }
+function getData() { return window._D || (window._D = loadData()); }
 
-function persistData() {
-  localStorage.setItem('portfolio_admin', JSON.stringify(getData()));
-  // Also write simplified version for main site to read
-  const d = getData();
-  localStorage.setItem('portfolio_data', JSON.stringify({
-    heroName: d.heroName, heroBio: d.heroBio, photoUrl: d.photoUrl,
-    aboutP1: d.aboutP1, aboutP2: d.aboutP2, statExp: d.statExp, statData: d.statData
-  }));
-  const ts = new Date().toLocaleTimeString();
-  document.getElementById('dash-last-save').textContent = ts;
-  document.getElementById('saveMsg').textContent = 'Saved at ' + ts;
-}
+// ═══ GITHUB PUBLISH ═══════════════════════════
+async function publishToGitHub() {
+  const gh = getGH();
+  if (!gh.token) { setMsg('❌ No GitHub token. Go to GitHub Settings.', 'err'); return; }
 
-// ═══════════════════════════════════════════════
-// PANELS
-// ═══════════════════════════════════════════════
-function showPanel(name, btn) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.mob-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + name).classList.add('active');
-  if (btn) { btn.classList.add('active'); }
-}
+  // Collect form values first
+  collectFormValues();
 
-// ═══════════════════════════════════════════════
-// SAVE
-// ═══════════════════════════════════════════════
-function saveAll() {
-  const d = getData();
-  // Hero
-  d.heroName = v('f-heroName');
-  d.heroRole = v('f-heroRole');
-  d.heroBio = v('f-heroBio');
-  d.photoUrl = v('f-photoUrl');
-  // About
-  d.aboutP1 = v('f-aboutP1');
-  d.aboutP2 = v('f-aboutP2');
-  d.statExp = v('f-statExp');
-  d.statData = v('f-statData');
-  // Repeatable sections are already mutated live
-  persistData();
   const btn = document.getElementById('saveBtn');
-  btn.textContent = '✅ Saved!'; btn.classList.add('saved');
-  setTimeout(() => { btn.textContent = '💾 Save Changes'; btn.classList.remove('saved'); }, 2000);
-  updateDashCounts();
+  btn.disabled = true;
+  setMsg('⏳ Publishing to GitHub...', 'loading');
+
+  const content = JSON.stringify(getData(), null, 2);
+  const encoded = btoa(unescape(encodeURIComponent(content)));
+  const path = 'data.json';
+  const apiBase = `https://api.github.com/repos/${gh.owner}/${gh.repo}/contents/${path}`;
+
+  try {
+    // Get current SHA of the file
+    let sha = '';
+    try {
+      const getRes = await fetch(apiBase, { headers: { 'Authorization': `Bearer ${gh.token}`, 'Accept': 'application/vnd.github.v3+json' } });
+      if (getRes.ok) { const j = await getRes.json(); sha = j.sha; }
+    } catch(e) {}
+
+    // PUT the updated file
+    const putRes = await fetch(apiBase, {
+      method: 'PUT',
+      headers: { 'Authorization': `Bearer ${gh.token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: '✏️ Update portfolio data via admin panel', content: encoded, sha: sha || undefined })
+    });
+
+    if (putRes.ok) {
+      const ts = new Date().toLocaleTimeString();
+      localStorage.setItem('portfolio_admin', JSON.stringify(getData()));
+      localStorage.setItem('last_published', ts);
+      document.getElementById('d-saved').textContent = ts;
+      setMsg(`✅ Published at ${ts} — site updates in ~60s`, 'ok');
+      updateDashCounts();
+    } else {
+      const err = await putRes.json();
+      setMsg('❌ ' + (err.message || 'Publish failed. Check token & repo settings.'), 'err');
+    }
+  } catch(e) {
+    setMsg('❌ Network error. Check connection and try again.', 'err');
+  }
+  btn.disabled = false;
 }
 
-function v(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+function setMsg(text, type) {
+  const el = document.getElementById('saveMsg');
+  el.textContent = text;
+  el.className = 'save-msg ' + (type||'');
+}
 
-// ═══════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════
-function initAdmin() {
+function collectFormValues() {
   const d = getData();
   // Hero
-  setVal('f-heroName', d.heroName);
-  setVal('f-heroRole', d.heroRole);
-  setVal('f-heroBio', d.heroBio);
-  setVal('f-photoUrl', d.photoUrl);
+  if(v('f-name')) d.hero.name = v('f-name');
+  if(v('f-role')) d.hero.role = v('f-role');
+  if(v('f-bio')) d.hero.bio = v('f-bio');
+  if(v('f-photo')) d.hero.photoUrl = v('f-photo');
   // About
-  setVal('f-aboutP1', d.aboutP1);
-  setVal('f-aboutP2', d.aboutP2);
-  setVal('f-statExp', d.statExp);
-  setVal('f-statData', d.statData);
-  // Repeatable
-  renderExpList();
-  renderProjList();
-  renderSkillsList();
-  renderEduList();
-  updateDashCounts();
+  if(v('f-p1')) d.about.p1 = v('f-p1');
+  if(v('f-p2')) d.about.p2 = v('f-p2');
+  if(v('f-statexp')) d.about.statExp = v('f-statexp');
+  if(v('f-statdata')) d.about.statData = v('f-statdata');
 }
 
-function setVal(id, val) { const el = document.getElementById(id); if(el && val !== undefined) el.value = val; }
+function v(id) { const el=document.getElementById(id); return el?el.value:''; }
+
+// ═══ PANEL NAVIGATION ═════════════════════════
+function showPanel(name, btn) {
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-btn,.mob-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  if(btn) btn.classList.add('active');
+}
+
+// ═══ INIT ══════════════════════════════════════
+function startAdmin() {
+  document.getElementById('admin-screen').style.display = 'block';
+  const d = getData();
+  // Fill fields
+  setV('f-name', d.hero.name); setV('f-role', d.hero.role); setV('f-bio', d.hero.bio); setV('f-photo', d.hero.photoUrl);
+  setV('f-p1', d.about.p1); setV('f-p2', d.about.p2); setV('f-statexp', d.about.statExp); setV('f-statdata', d.about.statData);
+  // Settings pre-fill
+  const gh = getGH();
+  setV('s-owner', gh.owner); setV('s-repo', gh.repo);
+  // Render lists
+  renderExp(); renderProj(); renderSkills(); renderEdu();
+  updateDashCounts();
+  const lastPub = localStorage.getItem('last_published');
+  if(lastPub) document.getElementById('d-saved').textContent = lastPub;
+}
+
+function setV(id, val) { const el=document.getElementById(id); if(el&&val!=null) el.value=val; }
 
 function updateDashCounts() {
   const d = getData();
-  document.getElementById('dash-exp-count').textContent = (d.experience||[]).length;
-  document.getElementById('dash-proj-count').textContent = (d.projects||[]).length;
-  document.getElementById('dash-skills-count').textContent = (d.skills||[]).length;
-  document.getElementById('dash-edu-count').textContent = (d.education||[]).length;
+  document.getElementById('d-exp').textContent = (d.experience||[]).length;
+  document.getElementById('d-proj').textContent = (d.projects||[]).length;
+  document.getElementById('d-skills').textContent = (d.skills||[]).length;
+  document.getElementById('d-edu').textContent = (d.education||[]).length;
 }
 
-// ═══════════════════════════════════════════════
-// EXPERIENCE
-// ═══════════════════════════════════════════════
-function renderExpList() {
-  const d = getData();
-  const list = document.getElementById('exp-list');
-  list.innerHTML = '';
-  (d.experience||[]).forEach((exp, idx) => {
-    const card = document.createElement('div');
-    card.className = 'item-card';
-    card.innerHTML = `
-      <div class="item-card-header" onclick="toggleCard(this)">
-        <div><div class="item-card-title">${exp.role||'Untitled Role'}</div><div class="item-card-meta">${exp.company||''} · ${exp.period||''}</div></div>
-        <div class="item-card-actions">
-          <button class="ic-btn" onclick="event.stopPropagation();moveExp(${idx},-1)" title="Move up">↑</button>
-          <button class="ic-btn" onclick="event.stopPropagation();moveExp(${idx},1)" title="Move down">↓</button>
-          <span class="ic-btn" style="cursor:default">≡</span>
-        </div>
-      </div>
-      <div class="item-card-body">
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Job Title</label><input type="text" class="form-input" value="${esc(exp.role||'')}" oninput="getData().experience[${idx}].role=this.value;this.closest('.item-card').querySelector('.item-card-title').textContent=this.value"/></div>
-          <div class="form-group"><label class="form-label">Company</label><input type="text" class="form-input" value="${esc(exp.company||'')}" oninput="getData().experience[${idx}].company=this.value;updateExpMeta(this,${idx})"/></div>
-        </div>
-        <div class="form-group"><label class="form-label">Period</label><input type="text" class="form-input" value="${esc(exp.period||'')}" placeholder="Jan 2023 – Present" oninput="getData().experience[${idx}].period=this.value;updateExpMeta(this,${idx})"/></div>
-        <div class="form-group">
-          <label class="form-label">Bullet Points</label>
-          <div class="bullet-list" id="bullets-exp-${idx}"></div>
-          <button class="add-bullet-btn" onclick="addBullet('exp',${idx})">+ Add bullet point</button>
-        </div>
-        <button class="del-item-btn" onclick="delExp(${idx})">🗑 Remove This Experience</button>
-      </div>`;
-    list.appendChild(card);
-    renderBullets('exp', idx, exp.bullets||[]);
+// ═══ EXPERIENCE ════════════════════════════════
+function renderExp() {
+  const list = document.getElementById('exp-list'); list.innerHTML = '';
+  getData().experience.forEach((e,i) => {
+    const c = document.createElement('div'); c.className = 'item-card';
+    c.innerHTML = `<div class="item-card-header" onclick="toggle(this)"><div><div class="item-title">${e.role||'Role'}</div><div class="item-meta">${e.company||''} · ${e.period||''}</div></div><div style="display:flex;gap:.4rem"><button class="ic-btn" onclick="event.stopPropagation();moveArr('experience',${i},-1)">↑</button><button class="ic-btn" onclick="event.stopPropagation();moveArr('experience',${i},1)">↓</button></div></div><div class="item-body"><div class="form-row"><div class="form-group"><label class="form-label">Job Title</label><input class="form-input" value="${esc(e.role||'')}" oninput="getData().experience[${i}].role=this.value;this.closest('.item-card').querySelector('.item-title').textContent=this.value"/></div><div class="form-group"><label class="form-label">Company</label><input class="form-input" value="${esc(e.company||'')}" oninput="getData().experience[${i}].company=this.value;refreshMeta(this,${i},'experience')"/></div></div><div class="form-group"><label class="form-label">Period</label><input class="form-input" value="${esc(e.period||'')}" placeholder="Jan 2023 – Present" oninput="getData().experience[${i}].period=this.value;refreshMeta(this,${i},'experience')"/></div><div class="form-group"><label class="form-label">Bullet Points</label><div id="bul-exp-${i}"></div><button class="add-bullet" onclick="addBullet(${i})">+ Add point</button></div><button class="del-btn" onclick="delItem('experience',${i})">🗑 Remove</button></div>`;
+    list.appendChild(c);
+    renderBullets(i, e.bullets||[]);
   });
 }
 
-function updateExpMeta(el, idx) {
-  const d = getData();
-  const meta = el.closest('.item-card').querySelector('.item-card-meta');
-  if (meta) meta.textContent = (d.experience[idx].company||'') + ' · ' + (d.experience[idx].period||'');
-}
-
-function renderBullets(type, idx, bullets) {
-  const container = document.getElementById(`bullets-${type}-${idx}`);
-  if (!container) return;
-  container.innerHTML = '';
-  bullets.forEach((b, bi) => {
-    const row = document.createElement('div');
-    row.className = 'bullet-row';
-    row.innerHTML = `<input type="text" class="bullet-input" value="${esc(b)}" placeholder="Describe what you did..." oninput="getBullets('${type}',${idx})[${bi}]=this.value"/><button class="bullet-del" onclick="delBullet('${type}',${idx},${bi})">✕</button>`;
-    container.appendChild(row);
+function renderBullets(idx, bullets) {
+  const c = document.getElementById(`bul-exp-${idx}`); if(!c) return; c.innerHTML = '';
+  bullets.forEach((b,bi) => {
+    const row = document.createElement('div'); row.className = 'bullet-row';
+    row.innerHTML = `<input class="bullet-input" value="${esc(b)}" oninput="getData().experience[${idx}].bullets[${bi}]=this.value"/><button class="bullet-del" onclick="delBullet(${idx},${bi})">✕</button>`;
+    c.appendChild(row);
   });
 }
 
-function getBullets(type, idx) {
-  const d = getData();
-  if (type==='exp') return d.experience[idx].bullets;
-  if (type==='proj') return d.projects[idx].bullets||[];
-  return [];
-}
+function addBullet(idx) { getData().experience[idx].bullets.push(''); renderBullets(idx, getData().experience[idx].bullets); }
+function delBullet(idx,bi) { getData().experience[idx].bullets.splice(bi,1); renderBullets(idx, getData().experience[idx].bullets); }
 
-function addBullet(type, idx) {
-  if (type==='exp') { getData().experience[idx].bullets.push(''); renderBullets('exp',idx,getData().experience[idx].bullets); }
-}
+function addExp() { getData().experience.push({id:'e'+Date.now(),role:'New Role',company:'Company',period:'Month Year – Present',bullets:['Describe your responsibilities.']}); renderExp(); updateDashCounts(); }
 
-function delBullet(type, idx, bi) {
-  if (type==='exp') { getData().experience[idx].bullets.splice(bi,1); renderBullets('exp',idx,getData().experience[idx].bullets); }
-}
-
-function addExpItem() {
-  const d = getData();
-  d.experience.push({ id:'e'+Date.now(), role:'New Role', company:'Company Name', period:'Month Year – Present', bullets:['Describe your responsibilities here.'] });
-  renderExpList();
-  updateDashCounts();
-}
-
-function delExp(idx) {
-  if (!confirm('Remove this experience entry?')) return;
-  getData().experience.splice(idx,1);
-  renderExpList();
-  updateDashCounts();
-}
-
-function moveExp(idx, dir) {
-  const arr = getData().experience;
-  const ni = idx+dir;
-  if (ni<0||ni>=arr.length) return;
-  [arr[idx],arr[ni]]=[arr[ni],arr[idx]];
-  renderExpList();
-}
-
-// ═══════════════════════════════════════════════
-// PROJECTS
-// ═══════════════════════════════════════════════
-function renderProjList() {
-  const d = getData();
-  const list = document.getElementById('proj-list');
-  list.innerHTML = '';
-  (d.projects||[]).forEach((proj, idx) => {
-    const card = document.createElement('div');
-    card.className = 'item-card';
-    card.innerHTML = `
-      <div class="item-card-header" onclick="toggleCard(this)">
-        <div><div class="item-card-title">${proj.title||'Untitled Project'}</div><div class="item-card-meta">${proj.category||''}</div></div>
-        <div class="item-card-actions">
-          <button class="ic-btn" onclick="event.stopPropagation();moveProj(${idx},-1)">↑</button>
-          <button class="ic-btn" onclick="event.stopPropagation();moveProj(${idx},1)">↓</button>
-        </div>
-      </div>
-      <div class="item-card-body">
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Project Title</label><input type="text" class="form-input" value="${esc(proj.title||'')}" oninput="getData().projects[${idx}].title=this.value;this.closest('.item-card').querySelector('.item-card-title').textContent=this.value"/></div>
-          <div class="form-group"><label class="form-label">Category</label><input type="text" class="form-input" value="${esc(proj.category||'')}" placeholder="e.g. Machine Learning" oninput="getData().projects[${idx}].category=this.value;this.closest('.item-card').querySelector('.item-card-meta').textContent=this.value"/></div>
-        </div>
-        <div class="form-group"><label class="form-label">Description</label><textarea class="form-input" rows="3" oninput="getData().projects[${idx}].desc=this.value">${esc(proj.desc||'')}</textarea></div>
-        <div class="form-group"><label class="form-label">Tech Tags (comma-separated)</label><input type="text" class="form-input" value="${esc(proj.tags||'')}" placeholder="Python,Machine Learning,Pandas" oninput="getData().projects[${idx}].tags=this.value"/><div class="form-hint">Used for the filter buttons on the portfolio</div></div>
-        <div class="form-group"><label class="form-label">GitHub URL</label><input type="text" class="form-input" value="${esc(proj.github||'')}" placeholder="https://github.com/..." oninput="getData().projects[${idx}].github=this.value"/></div>
-        <div class="form-group"><label class="form-label">Image URL</label><input type="text" class="form-input" value="${esc(proj.image||'')}" placeholder="https://images.unsplash.com/..." oninput="getData().projects[${idx}].image=this.value"/></div>
-        <button class="del-item-btn" onclick="delProj(${idx})">🗑 Remove This Project</button>
-      </div>`;
-    list.appendChild(card);
+// ═══ PROJECTS ══════════════════════════════════
+function renderProj() {
+  const list = document.getElementById('proj-list'); list.innerHTML = '';
+  getData().projects.forEach((p,i) => {
+    const c = document.createElement('div'); c.className = 'item-card';
+    c.innerHTML = `<div class="item-card-header" onclick="toggle(this)"><div><div class="item-title">${p.title||'Project'}</div><div class="item-meta">${p.category||''}</div></div><div style="display:flex;gap:.4rem"><button class="ic-btn" onclick="event.stopPropagation();moveArr('projects',${i},-1)">↑</button><button class="ic-btn" onclick="event.stopPropagation();moveArr('projects',${i},1)">↓</button></div></div><div class="item-body"><div class="form-row"><div class="form-group"><label class="form-label">Title</label><input class="form-input" value="${esc(p.title||'')}" oninput="getData().projects[${i}].title=this.value;this.closest('.item-card').querySelector('.item-title').textContent=this.value"/></div><div class="form-group"><label class="form-label">Category</label><input class="form-input" value="${esc(p.category||'')}" placeholder="e.g. Machine Learning" oninput="getData().projects[${i}].category=this.value;this.closest('.item-card').querySelector('.item-meta').textContent=this.value"/></div></div><div class="form-group"><label class="form-label">Description</label><textarea class="form-input" oninput="getData().projects[${i}].desc=this.value">${esc(p.desc||'')}</textarea></div><div class="form-group"><label class="form-label">Tech Tags (comma-separated)</label><input class="form-input" value="${esc(p.tags||'')}" placeholder="Python,ML,Pandas" oninput="getData().projects[${i}].tags=this.value"/><div class="form-hint">Used for filter buttons</div></div><div class="form-group"><label class="form-label">GitHub URL</label><input class="form-input" value="${esc(p.github||'')}" placeholder="https://github.com/..." oninput="getData().projects[${i}].github=this.value"/></div><div class="form-group"><label class="form-label">Image URL</label><input class="form-input" value="${esc(p.image||'')}" placeholder="https://images.unsplash.com/..." oninput="getData().projects[${i}].image=this.value"/></div><button class="del-btn" onclick="delItem('projects',${i})">🗑 Remove</button></div>`;
+    list.appendChild(c);
   });
 }
 
-function addProjItem() {
-  getData().projects.push({ id:'p'+Date.now(), title:'New Project', category:'Category', desc:'Describe the project.', tags:'', github:'', image:'' });
-  renderProjList(); updateDashCounts();
-}
-function delProj(idx) { if(!confirm('Remove this project?')) return; getData().projects.splice(idx,1); renderProjList(); updateDashCounts(); }
-function moveProj(idx,dir) { const arr=getData().projects; const ni=idx+dir; if(ni<0||ni>=arr.length) return; [arr[idx],arr[ni]]=[arr[ni],arr[idx]]; renderProjList(); }
+function addProj() { getData().projects.push({id:'p'+Date.now(),title:'New Project',category:'Category',desc:'Describe the project.',tags:'',github:'',image:''}); renderProj(); updateDashCounts(); }
 
-// ═══════════════════════════════════════════════
-// SKILLS
-// ═══════════════════════════════════════════════
-function renderSkillsList() {
-  const d = getData();
-  const list = document.getElementById('skills-list');
-  list.innerHTML = '';
-  (d.skills||[]).forEach((sg, idx) => {
-    const card = document.createElement('div');
-    card.className = 'item-card';
-    card.innerHTML = `
-      <div class="item-card-header" onclick="toggleCard(this)">
-        <div><div class="item-card-title">${sg.category||'Skill Category'}</div><div class="item-card-meta">${(sg.items||'').split(',').length} skills</div></div>
-        <div class="item-card-actions">
-          <button class="ic-btn" onclick="event.stopPropagation();moveSkill(${idx},-1)">↑</button>
-          <button class="ic-btn" onclick="event.stopPropagation();moveSkill(${idx},1)">↓</button>
-        </div>
-      </div>
-      <div class="item-card-body">
-        <div class="form-group"><label class="form-label">Category Name</label><input type="text" class="form-input" value="${esc(sg.category||'')}" oninput="getData().skills[${idx}].category=this.value;this.closest('.item-card').querySelector('.item-card-title').textContent=this.value"/></div>
-        <div class="form-group">
-          <label class="form-label">Skills (comma-separated)</label>
-          <input type="text" class="form-input" value="${esc(sg.items||'')}" placeholder="Python,JavaScript,React" oninput="getData().skills[${idx}].items=this.value;updateSkillCount(this,${idx})"/>
-          <div class="form-hint">Add each skill separated by a comma</div>
-        </div>
-        <button class="del-item-btn" onclick="delSkill(${idx})">🗑 Remove Category</button>
-      </div>`;
-    list.appendChild(card);
+// ═══ SKILLS ════════════════════════════════════
+function renderSkills() {
+  const list = document.getElementById('skills-list'); list.innerHTML = '';
+  getData().skills.forEach((s,i) => {
+    const count = (s.items||'').split(',').filter(Boolean).length;
+    const c = document.createElement('div'); c.className = 'item-card';
+    c.innerHTML = `<div class="item-card-header" onclick="toggle(this)"><div><div class="item-title">${s.category||'Category'}</div><div class="item-meta">${count} skills</div></div><div style="display:flex;gap:.4rem"><button class="ic-btn" onclick="event.stopPropagation();moveArr('skills',${i},-1)">↑</button><button class="ic-btn" onclick="event.stopPropagation();moveArr('skills',${i},1)">↓</button></div></div><div class="item-body"><div class="form-group"><label class="form-label">Category Name</label><input class="form-input" value="${esc(s.category||'')}" oninput="getData().skills[${i}].category=this.value;this.closest('.item-card').querySelector('.item-title').textContent=this.value"/></div><div class="form-group"><label class="form-label">Skills (comma-separated)</label><input class="form-input" value="${esc(s.items||'')}" placeholder="Python,JavaScript,React" oninput="getData().skills[${i}].items=this.value;this.closest('.item-card').querySelector('.item-meta').textContent=this.value.split(',').filter(Boolean).length+' skills'"/><div class="form-hint">Each skill separated by a comma</div></div><button class="del-btn" onclick="delItem('skills',${i})">🗑 Remove Category</button></div>`;
+    list.appendChild(c);
   });
 }
 
-function updateSkillCount(el, idx) {
-  const count = el.value.split(',').filter(s=>s.trim()).length;
-  el.closest('.item-card').querySelector('.item-card-meta').textContent = count + ' skills';
-}
+function addSkill() { getData().skills.push({id:'s'+Date.now(),category:'New Category',items:''}); renderSkills(); updateDashCounts(); }
 
-function addSkillGroup() { getData().skills.push({ id:'s'+Date.now(), category:'New Category', items:'' }); renderSkillsList(); updateDashCounts(); }
-function delSkill(idx) { if(!confirm('Remove this skill category?')) return; getData().skills.splice(idx,1); renderSkillsList(); updateDashCounts(); }
-function moveSkill(idx,dir) { const arr=getData().skills; const ni=idx+dir; if(ni<0||ni>=arr.length) return; [arr[idx],arr[ni]]=[arr[ni],arr[idx]]; renderSkillsList(); }
-
-// ═══════════════════════════════════════════════
-// EDUCATION
-// ═══════════════════════════════════════════════
-function renderEduList() {
-  const d = getData();
-  const list = document.getElementById('edu-list');
-  list.innerHTML = '';
-  (d.education||[]).forEach((edu, idx) => {
-    const card = document.createElement('div');
-    card.className = 'item-card';
-    card.innerHTML = `
-      <div class="item-card-header" onclick="toggleCard(this)">
-        <div><div class="item-card-title">${edu.institution||'Institution'}</div><div class="item-card-meta">${edu.degree||''} · ${edu.period||''}</div></div>
-      </div>
-      <div class="item-card-body">
-        <div class="form-group"><label class="form-label">Institution</label><input type="text" class="form-input" value="${esc(edu.institution||'')}" oninput="getData().education[${idx}].institution=this.value;this.closest('.item-card').querySelector('.item-card-title').textContent=this.value"/></div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Degree / Program</label><input type="text" class="form-input" value="${esc(edu.degree||'')}" oninput="getData().education[${idx}].degree=this.value;updateEduMeta(this,${idx})"/></div>
-          <div class="form-group"><label class="form-label">Period</label><input type="text" class="form-input" value="${esc(edu.period||'')}" placeholder="2018 – 2022" oninput="getData().education[${idx}].period=this.value;updateEduMeta(this,${idx})"/></div>
-        </div>
-        <div class="form-group"><label class="form-label">Score / Grade</label><input type="text" class="form-input" value="${esc(edu.score||'')}" placeholder="CGPA: 8.2" oninput="getData().education[${idx}].score=this.value"/></div>
-        <button class="del-item-btn" onclick="delEdu(${idx})">🗑 Remove Entry</button>
-      </div>`;
-    list.appendChild(card);
+// ═══ EDUCATION ═════════════════════════════════
+function renderEdu() {
+  const list = document.getElementById('edu-list'); list.innerHTML = '';
+  getData().education.forEach((e,i) => {
+    const c = document.createElement('div'); c.className = 'item-card';
+    c.innerHTML = `<div class="item-card-header" onclick="toggle(this)"><div><div class="item-title">${e.institution||'Institution'}</div><div class="item-meta">${e.degree||''} · ${e.period||''}</div></div></div><div class="item-body"><div class="form-group"><label class="form-label">Institution</label><input class="form-input" value="${esc(e.institution||'')}" oninput="getData().education[${i}].institution=this.value;this.closest('.item-card').querySelector('.item-title').textContent=this.value"/></div><div class="form-row"><div class="form-group"><label class="form-label">Degree / Program</label><input class="form-input" value="${esc(e.degree||'')}" oninput="getData().education[${i}].degree=this.value;refreshMeta(this,${i},'education')"/></div><div class="form-group"><label class="form-label">Period</label><input class="form-input" value="${esc(e.period||'')}" placeholder="2018 – 2022" oninput="getData().education[${i}].period=this.value;refreshMeta(this,${i},'education')"/></div></div><div class="form-group"><label class="form-label">Score / Grade</label><input class="form-input" value="${esc(e.score||'')}" placeholder="CGPA: 8.2" oninput="getData().education[${i}].score=this.value"/></div><button class="del-btn" onclick="delItem('education',${i})">🗑 Remove</button></div>`;
+    list.appendChild(c);
   });
 }
 
-function updateEduMeta(el, idx) {
-  const d = getData();
-  const meta = el.closest('.item-card').querySelector('.item-card-meta');
-  if (meta) meta.textContent = (d.education[idx].degree||'') + ' · ' + (d.education[idx].period||'');
-}
+function addEdu() { getData().education.push({id:'edu'+Date.now(),institution:'Institution Name',degree:'Degree',period:'YYYY – YYYY',score:''}); renderEdu(); updateDashCounts(); }
 
-function addEduItem() { getData().education.push({ id:'edu'+Date.now(), institution:'Institution Name', degree:'Degree', period:'YYYY – YYYY', score:'' }); renderEduList(); updateDashCounts(); }
-function delEdu(idx) { if(!confirm('Remove this education entry?')) return; getData().education.splice(idx,1); renderEduList(); updateDashCounts(); }
-
-// ═══════════════════════════════════════════════
-// UTILS
-// ═══════════════════════════════════════════════
-function toggleCard(header) {
-  const body = header.nextElementSibling;
-  body.classList.toggle('open');
-}
-
+// ═══ UTILS ═════════════════════════════════════
+function toggle(header) { header.nextElementSibling.classList.toggle('open'); }
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function exportData() {
-  const json = JSON.stringify(getData(), null, 2);
-  const a = document.createElement('a');
-  a.href = 'data:application/json,' + encodeURIComponent(json);
-  a.download = 'portfolio-backup-' + new Date().toISOString().slice(0,10) + '.json';
-  a.click();
-}
-
-function importData() { document.getElementById('importFile').click(); }
-
-function handleImport(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    try {
-      const imported = JSON.parse(e.target.result);
-      window._adminData = Object.assign({}, DEFAULTS, imported);
-      persistData();
-      initAdmin();
-      alert('✅ Data imported successfully!');
-    } catch(err) { alert('❌ Invalid JSON file.'); }
-  };
-  reader.readAsText(file);
-}
+function delItem(key,idx) { if(!confirm('Remove this entry?')) return; getData()[key].splice(idx,1); if(key==='experience')renderExp();else if(key==='projects')renderProj();else if(key==='skills')renderSkills();else if(key==='education')renderEdu(); updateDashCounts(); }
+function moveArr(key,idx,dir) { const arr=getData()[key]; const ni=idx+dir; if(ni<0||ni>=arr.length)return; [arr[idx],arr[ni]]=[arr[ni],arr[idx]]; if(key==='experience')renderExp();else if(key==='projects')renderProj();else if(key==='skills')renderSkills();else if(key==='education')renderEdu(); }
+function refreshMeta(el,idx,key) { const d=getData()[key][idx]; const meta=el.closest('.item-card').querySelector('.item-meta'); if(meta&&d){if(key==='experience')meta.textContent=(d.company||'')+' · '+(d.period||'');else if(key==='education')meta.textContent=(d.degree||'')+' · '+(d.period||'');} }
 </script>
 </body>
 </html>

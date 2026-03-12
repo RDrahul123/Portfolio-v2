@@ -19,8 +19,8 @@
       "period": "Sept 2024 – Present",
       "bullets": [
         "Interpreted datasets to extract insights that led to a 15% improvement in data-driven decision-making.",
-        "Standardized data cleaning procedures using Python and Pandas, achieving 99.9% accuracy.",
-        "Queried and examined over 100K records weekly using SQL and Python, cutting retrieval time by 20%.",
+        "Standardized data cleaning using Python and Pandas, achieving 99.9% accuracy.",
+        "Queried over 100K records weekly using SQL and Python, cutting retrieval time by 20%.",
         "Audited data quality, identifying and resolving 95% of data discrepancies."
       ]
     },
@@ -31,8 +31,8 @@
       "period": "Oct 2022 – Apr 2024",
       "bullets": [
         "Directed a team of three in developing responsive websites, increasing user engagement by 20%.",
-        "Instituted automated code validation and CI pipelines, cutting bugs by 25%.",
-        "Boosted system efficiency by cutting load times by 25% using C++ and Python."
+        "Instituted CI pipelines, cutting bugs by 25%.",
+        "Boosted system efficiency, cutting load times by 25% using C++ and Python."
       ]
     },
     {
@@ -41,7 +41,7 @@
       "company": "TCS iON",
       "period": "Jun 2022 – Sept 2022",
       "bullets": [
-        "Engineered blockchain application solutions with Python and Solidity, improving code efficiency by 30%.",
+        "Engineered blockchain solutions with Python and Solidity, improving code efficiency by 30%.",
         "Orchestrated Docker deployments on AWS, improving transaction speed by 15%."
       ]
     }
@@ -51,7 +51,7 @@
       "id": "p1",
       "title": "Sales Analysis Dashboard",
       "category": "Data Analysis",
-      "desc": "An interactive Power BI dashboard analyzing 12 months of sales data. Segmented product data into 15+ subcategories and mapped regional profits across 50 zones, identifying optimization opportunities that boosted profitability.",
+      "desc": "An interactive Power BI dashboard analyzing 12 months of sales data. Segmented product data into 15+ subcategories and mapped regional profits across 50 zones.",
       "tags": "Power BI,Excel,JSON,Data Analytics",
       "github": "https://github.com/RDrahul123/Sales-Dashboard",
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
@@ -60,19 +60,43 @@
       "id": "p2",
       "title": "Financial Market Trend Predictor",
       "category": "Machine Learning",
-      "desc": "A Python-based analytics engine that evaluated stock and cryptocurrency trends, achieving a 15% increase in predictive accuracy through machine learning models.",
+      "desc": "A Python-based analytics engine evaluating stock and crypto trends, achieving a 15% increase in predictive accuracy through ML models.",
       "tags": "Python,Machine Learning,Pandas,Matplotlib",
       "github": "https://github.com/RDrahul123/Stock-Analysis",
       "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop"
     }
   ],
   "skills": [
-    { "id": "s1", "category": "Programming Languages", "items": "Python,C++,Java" },
-    { "id": "s2", "category": "Data Analysis & Viz", "items": "Pandas,NumPy,Matplotlib,Seaborn,Power BI,Tableau,Excel,Jupyter,TensorFlow,Keras" },
-    { "id": "s3", "category": "Machine Learning", "items": "Scikit-learn,Regression,Classification,Feature Engineering,Predictive Modeling,Time Series" },
-    { "id": "s4", "category": "Databases", "items": "MySQL,MongoDB" },
-    { "id": "s5", "category": "Tools & Platforms", "items": "Git,GitHub,VS Code,Docker,AWS,Linux" },
-    { "id": "s6", "category": "Other", "items": "ETL,Data Wrangling,Data Cleaning,Agile,Problem Solving" }
+    {
+      "id": "s1",
+      "category": "Programming Languages",
+      "items": "Python,C++,Java, R Programming"
+    },
+    {
+      "id": "s2",
+      "category": "Data Analysis & Viz",
+      "items": "Pandas,NumPy,Matplotlib,Seaborn,Power BI,Tableau,Excel,Jupyter,TensorFlow,Keras"
+    },
+    {
+      "id": "s3",
+      "category": "Machine Learning",
+      "items": "Scikit-learn,Regression,Classification,Feature Engineering,Predictive Modeling,Time Series"
+    },
+    {
+      "id": "s4",
+      "category": "Databases",
+      "items": "MySQL,MongoDB"
+    },
+    {
+      "id": "s5",
+      "category": "Tools & Platforms",
+      "items": "Git,GitHub,VS Code,Docker,AWS,Linux"
+    },
+    {
+      "id": "s6",
+      "category": "Other",
+      "items": "ETL,Data Wrangling,Data Cleaning,Agile,Problem Solving"
+    }
   ],
   "education": [
     {

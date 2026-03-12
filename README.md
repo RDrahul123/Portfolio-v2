@@ -6,7 +6,7 @@
 
 **Data Science Analyst & Software Engineer**
 
-[![Live Site](https://img.shields.io/badge/🌐_Live_Site-RDrahul123.github.io-3b82f6?style=for-the-badge)](https://RDrahul123.github.io/Portfolio)
+[![Live Site](https://img.shields.io/badge/🌐_Live_Site-RDrahul123.github.io-3b82f6?style=for-the-badge)](https://prakrit.site/)
 [![Admin Panel](https://img.shields.io/badge/⚙_Admin_Panel-Back_Office-8b5cf6?style=for-the-badge)](https://RDrahul123.github.io/Portfolio/admin.html)
 [![GitHub Pages](https://img.shields.io/badge/Deployed_on-GitHub_Pages-24292e?style=for-the-badge&logo=github)](https://pages.github.com)
 

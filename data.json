@@ -85,12 +85,12 @@
     {
       "id": "s4",
       "category": "Databases",
-      "items": "MySQL,MongoDB"
+      "items": "SQL, MySQL,MongoDB"
     },
     {
       "id": "s5",
       "category": "Tools & Platforms",
-      "items": "Git,GitHub,VS Code,Docker,AWS,Linux"
+      "items": "Git,GitHub,VS Code,Docker,Azure,Linux"
     },
     {
       "id": "s6",

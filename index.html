@@ -324,9 +324,9 @@ section{padding:5rem 1.25rem}
 .r-sub{display:flex;justify-content:space-between;font-size:.8rem;color:#475569;margin-bottom:.3rem;flex-wrap:wrap;gap:.2rem}
 .r-ul{list-style:disc;padding-left:1.1rem}
 .r-ul li{font-size:.8rem;color:#334155;line-height:1.5;margin-bottom:.18rem}
-.r-skill-row{display:flex;font-size:.8rem;margin-bottom:.25rem;flex-wrap:wrap;gap:.25rem}
-.r-skill-cat{font-weight:700;min-width:160px;color:#0f172a}
-.r-skill-val{color:#334155}
+.r-skill-row{display:flex;font-size:.8rem;margin-bottom:.35rem;flex-wrap:nowrap;gap:0;align-items:baseline;overflow:hidden}
+.r-skill-cat{font-weight:700;width:160px;min-width:160px;flex-shrink:0;color:#0f172a;padding-right:.5rem}
+.r-skill-val{color:#334155;flex:1;min-width:0;word-break:break-word}
 
 /* ── CONTACT ─────────────────────────────────────────────── */
 #contact{background:var(--bg)}
@@ -434,7 +434,7 @@ footer span{color:var(--blue);font-family:var(--mono);font-size:.78rem}
   .r-name{font-size:1.25rem}
   .r-contact{font-size:.72rem;word-break:break-word}
   .r-skill-row{flex-direction:column;gap:.1rem}
-  .r-skill-cat{min-width:unset;font-size:.75rem}
+  .r-skill-cat{min-width:unset;width:auto;font-size:.75rem;font-weight:700;color:#0f172a}
   .r-skill-val{font-size:.75rem;padding-left:.75rem}
   .r-row,.r-sub{font-size:.76rem}
   .r-ul li{font-size:.76rem}
@@ -632,7 +632,7 @@ footer span{color:var(--blue);font-family:var(--mono);font-size:.78rem}
         <h2 class="sec-title" style="margin-bottom:.5rem">Resume</h2>
         <p class="sec-sub">Professional background, education, and certifications.</p>
       </div>
-      <a class="cta-p" href="https://raw.githubusercontent.com/RDrahul123/Portfolio/main/Rahul_Dodke_Resume.pdf" target="_blank">
+      <a class="cta-p" id="resume-dl-btn" href="https://raw.githubusercontent.com/RDrahul123/Portfolio/main/Rahul_Dodke_Resume.pdf" onclick="handleResumeDownload(event)">
         <i data-lucide="download" style="width:15px;height:15px"></i> Download PDF
       </a>
     </div>
@@ -898,6 +898,43 @@ fetch('data.json?v='+Date.now())
   .then(r=>{if(!r.ok)throw 0; return r.json();})
   .then(data=>{render(data); drawRadar(); ldr.classList.add('out'); setTimeout(()=>ldr.remove(),600);})
   .catch(()=>{render({hero:{name:'Rahul',bio:'Data Science Analyst & Software Engineer.'},about:{},experience:[],projects:[],skills:[],education:[]}); drawRadar(); ldr.classList.add('out');});
+
+// ── RESUME DOWNLOAD ──
+// GitHub raw URLs don't support the download attribute cross-origin.
+// We fetch the PDF as a blob and trigger a real browser download.
+async function handleResumeDownload(e) {
+  e.preventDefault();
+  const btn = document.getElementById('resume-dl-btn');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<i data-lucide="loader" style="width:15px;height:15px"></i> Downloading…';
+  btn.style.opacity = '.7';
+  btn.style.pointerEvents = 'none';
+  lucide.createIcons();
+  try {
+    const url = 'https://raw.githubusercontent.com/RDrahul123/Portfolio/main/Rahul_Dodke_Resume.pdf';
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('fetch failed');
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = 'Rahul_Dodke_Resume.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+    btn.innerHTML = '<i data-lucide="check" style="width:15px;height:15px"></i> Downloaded!';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.opacity = ''; btn.style.pointerEvents = ''; lucide.createIcons(); }, 2500);
+  } catch(err) {
+    // Fallback: open in new tab if fetch/blob fails (e.g. CORS)
+    window.open('https://raw.githubusercontent.com/RDrahul123/Portfolio/main/Rahul_Dodke_Resume.pdf', '_blank');
+    btn.innerHTML = orig;
+    btn.style.opacity = '';
+    btn.style.pointerEvents = '';
+    lucide.createIcons();
+  }
+}
 </script>
 </body>
 </html>
